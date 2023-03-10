@@ -27,7 +27,9 @@ lint: |
 scenario:
   name: default
   test_sequence:
+    - dependency
     - lint
+    - cleanup
     - destroy
     - syntax
     - create
@@ -35,4 +37,5 @@ scenario:
     - converge
     - idempotence
     - verify
+    - cleanup
     - destroy

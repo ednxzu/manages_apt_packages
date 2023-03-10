@@ -27,7 +27,9 @@ lint: |
 scenario:
   name: with_custom_packages
   test_sequence:
+    - dependency
     - lint
+    - cleanup
     - destroy
     - syntax
     - create
