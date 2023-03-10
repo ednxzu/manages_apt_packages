@@ -30,8 +30,8 @@ scenario:
     - lint
     - destroy
     - syntax
-    - prepare
     - create
+    - prepare
     - converge
     - idempotence
     - verify
