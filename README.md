@@ -42,7 +42,7 @@ Including an example of how to use your role (for instance, with variables passe
 # calling the role inside a playbook and injecting variables (in another role for example)
 - hosts: servers
   tasks:
-    - name: "Install nginx package"
+    - name: "Install consul package"
       ansible.builtin.include_role: 
         name: ednxzu.manage_apt_packages
       vars:
