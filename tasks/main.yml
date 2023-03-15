@@ -9,7 +9,6 @@
   ansible.builtin.apt:
     name: "{{ item.name }}{% if item.version not in [None, '', 'latest'] %}={{ item.version }}{% endif %}"
     state: "{{ item.state }}"
-    allow_downgrade:
   loop: "{{ manage_apt_packages_list }}"
   when: manage_apt_packages_list is defined
     and manage_apt_packages_list not in [None, '']

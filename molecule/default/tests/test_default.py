@@ -9,8 +9,6 @@ def test_hosts_file(host):
     assert etc_hosts.group == "root"
 
 def test_packages_not_installed(host):
-    """Validate nginx and apache2 are not installed"""
-    apt_package_nginx = host.package("nginx")
-    apt_package_apache2 = host.package("apache2")
-    assert not apt_package_nginx.is_installed
-    assert not apt_package_apache2.is_installed
+    """Validate vim is installed"""
+    apt_package_vim = host.package("vim")
+    assert apt_package_vim.is_installed
