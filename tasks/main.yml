@@ -5,7 +5,7 @@
     update_cache: yes
     cache_valid_time: 3600
 
-- name: "Install/remove required packages"
+- name: "Install/remove required apt packages"
   ansible.builtin.apt:
     name: "{{ item.name }}{% if item.version not in [None, '', 'latest'] %}={{ item.version }}{% endif %}"
     state: "{{ item.state }}"
