@@ -20,7 +20,7 @@ manage_apt_packages_list: # by default, not defined
     state: absent
   - name: ...
 ```
-This variable is a list of packages, with their name, desired version and state. Note that the role allows version rollbacks, so unless you absolutely need a specific version, it is usualy advised to keep the version on `latest` on empty (which is considered the same).
+This variable is a list of packages, with their name, desired version and state. Note that the role allows version rollbacks, so unless you absolutely need a specific version, it is usualy advised to keep the version on `latest` or empty (which is considered the same).
 
 Dependencies
 ------------
@@ -43,7 +43,7 @@ Including an example of how to use your role (for instance, with variables passe
 - hosts: servers
   tasks:
     - name: "Install consul package"
-      ansible.builtin.include_role: 
+      ansible.builtin.include_role:
         name: ednxzu.manage_apt_packages
       vars:
         manage_apt_packages_list:
