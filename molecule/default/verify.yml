@@ -17,3 +17,15 @@
               - stat_etc_hosts.stat.isreg
               - stat_etc_hosts.stat.pw_name == 'root'
               - stat_etc_hosts.stat.gr_name == 'root'
+
+    - name: "Test: package vim"
+      block:
+      - name: "Command apt list vim"
+        ansible.builtin.command: "apt list vim"
+        changed_when: false
+        register: apt_list_vim
+
+      - name: "Verify package vim"
+        ansible.builtin.assert:
+          that:
+           - "'[installed]' in apt_list_vim.stdout"
