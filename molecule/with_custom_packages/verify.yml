@@ -17,3 +17,31 @@
               - stat_etc_hosts.stat.isreg
               - stat_etc_hosts.stat.pw_name == 'root'
               - stat_etc_hosts.stat.gr_name == 'root'
+
+    - name: "Test: package mariadb-server, apache2, consul:1.13.1-1"
+      block:
+        - name: "Command apt list mariadb-server"
+          ansible.builtin.command: "apt list mariadb-server"
+          changed_when: false
+          register: apt_list_mariadb_server
+
+        - name: "Command apt list apache2"
+          ansible.builtin.command: "apt list apache2"
+          changed_when: false
+          register: apt_list_apache2
+
+        - name: "Command apt list consul"
+          ansible.builtin.command: "apt-cache policy consul"
+          changed_when: false
+          register: apt_cache_policy_consul
+
+        - name: "Debug"
+          vars:
+            consul_yaml: "{{ (apt_cache_policy_consul.stdout|to_yaml|from_yaml) }}"
+          ansible.builtin.debug:
+            msg: "{{ consul_yaml|to_yaml }}"
+
+        - name: "Verify package vim"
+          ansible.builtin.assert:
+            that:
+              - "'[installed]' in apt_list_vim.stdout"
