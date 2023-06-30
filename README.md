@@ -1,6 +1,6 @@
-Manage apt packages
+manage_apt_packages
 =========
-> This repository is only a mirror. Development and testing is done on a private gitlab server.
+> This repository is only a mirror. Development and testing is done on a private gitea server.
 
 This role enables you to manage packages on **debian-based** distributions. It can be used on its own , or be called by other roles the install/remove packages on demand.
 

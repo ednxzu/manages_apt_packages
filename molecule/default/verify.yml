@@ -20,12 +20,11 @@
 
     - name: "Test: package vim"
       block:
-        - name: "Command apt list vim"
-          ansible.builtin.command: "apt list vim"
-          changed_when: false
-          register: apt_list_vim
+        - name: "Get packages facts"
+          ansible.builtin.package_facts:
+            manager: auto
 
         - name: "Verify package vim"
           ansible.builtin.assert:
             that:
-              - "'[installed]' in apt_list_vim.stdout"
+              - "'{{ ansible_facts.packages['vim'][0]['name'] }}' == 'vim'"
