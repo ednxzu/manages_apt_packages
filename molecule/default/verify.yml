@@ -27,4 +27,4 @@
         - name: "Verify package vim"
           ansible.builtin.assert:
             that:
-              - "'{{ ansible_facts.packages['vim'][0]['name'] }}' == 'vim'"
+              - "ansible_facts.packages['vim'][0]['name'] == 'vim'"

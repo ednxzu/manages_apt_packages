@@ -27,7 +27,7 @@
         - name: "Verify packages mariadb-server, apache2, consul:1.13.1-1"
           ansible.builtin.assert:
             that:
-              - "'{{ ansible_facts.packages['mariadb-server'][0]['name'] }}' == 'mariadb-server'"
-              - "'{{ ansible_facts.packages['apache2'][0]['name'] }}' == 'apache2'"
-              - "'{{ ansible_facts.packages['consul'][0]['name'] }}' == 'consul'"
-              - "'{{ ansible_facts.packages['consul'][0]['version'] }}' == '1.13.1-1'"
+              - "ansible_facts.packages['mariadb-server'][0]['name'] == 'mariadb-server'"
+              - "ansible_facts.packages['apache2'][0]['name'] == 'apache2'"
+              - "ansible_facts.packages['consul'][0]['name'] == 'consul'"
+              - "ansible_facts.packages['consul'][0]['version'] == '1.13.1-1'"
