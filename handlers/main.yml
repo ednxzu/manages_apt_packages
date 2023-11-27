@@ -3,4 +3,5 @@
 - name: "Remove unnecessary dependencies"
   ansible.builtin.apt:
     autoremove: yes
+  become: true
   listen: "apt-autoremove"
