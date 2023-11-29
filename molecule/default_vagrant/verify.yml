@@ -1,0 +1,34 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: "Test: file /etc/hosts"
+      block:
+        - name: "Stat file /etc/hosts"
+          ansible.builtin.stat:
+            path: "/etc/hosts"
+          register: stat_etc_hosts
+
+        - name: "Verify file /etc/hosts"
+          vars:
+            etc_hosts_group:
+              ubuntu: "adm"
+              debian: "root"
+          ansible.builtin.assert:
+            that:
+              - stat_etc_hosts.stat.exists
+              - stat_etc_hosts.stat.isreg
+              - stat_etc_hosts.stat.pw_name == 'root'
+              - stat_etc_hosts.stat.gr_name == etc_hosts_group[(ansible_distribution|lower)]
+
+    - name: "Test: package vim"
+      block:
+        - name: "Get packages facts"
+          ansible.builtin.package_facts:
+            manager: auto
+
+        - name: "Verify package vim"
+          ansible.builtin.assert:
+            that:
+              - "ansible_facts.packages['vim'][0]['name'] == 'vim'"
