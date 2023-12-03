@@ -4,7 +4,6 @@
   ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: "{{ manage_apt_packages_apt_cache_time }}"
-  become: true
 
 - name: "Install/remove required apt packages"
   ansible.builtin.apt:
@@ -15,4 +14,3 @@
   when: manage_apt_packages_list is defined
     and manage_apt_packages_list not in [None, '']
   notify: "apt-autoremove"
-  become: true
