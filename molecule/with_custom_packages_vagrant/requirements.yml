@@ -1,4 +1,4 @@
 ---
 # requirements file for molecule
 roles:
-  - name: ednxzu.manage_repositories
+  - name: ednz_cloud.manage_repositories

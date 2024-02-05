@@ -34,7 +34,7 @@ Example Playbook
 # calling the role inside a playbook with either the default or group_vars/host_vars
 - hosts: servers
   roles:
-    - ednxzu.manage_apt_packages
+    - ednz_cloud.manage_apt_packages
 ```
 
 ```yaml
@@ -43,7 +43,7 @@ Example Playbook
   tasks:
     - name: "Install consul package"
       ansible.builtin.include_role:
-        name: ednxzu.manage_apt_packages
+        name: ednz_cloud.manage_apt_packages
       vars:
         manage_apt_packages_list:
           - name: consul
